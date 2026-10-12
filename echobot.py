@@ -5,7 +5,7 @@ st.title("Echo Bot")
 
 # Initialize Chat History
 if "messages" not in st.session_state:
-  st.sesstion_state.messages = []
+  st.session_state.messages = []
 
 # Display chat messages from History on app rerun
 for message in st.session_state.messages:
