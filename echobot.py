@@ -1,13 +1,30 @@
 import streamlit as st
 import numpy as np
 
-with st.chat_message("user"):
-  st.write("Hello!")
+st.title("Echo Bot")
 
-with st.chat_message("assistant"):
-  st.write("Hello Human.")
-  st.bar_chart(np.random.randn(30,3))
+# Initialize Chat History
+if "messages" not in st.session_state:
+  st.sesstion_state.messages = []
 
-prompt = st.chat_input("Say Something")
-if prompt:
-  st.write(f"User has sent the following prompt: {prompt}")
+# Display chat messages from History on app rerun
+for message in st.session_state.messages:
+  with st.chat_message(message["role"]):
+    st.markdown(message["content"])
+
+# React to user input
+if prompt := st.chat_input("What is up?"):
+
+  # Display user message in chat message container
+  st.chat_message("user").markdown(prompt)
+
+  # Add user message to history
+  st.session_state.messages.append({"role": "user", "content": prompt})
+  response = f"Echo: {prompt}"
+
+  # Display assistant response
+  with st.chat_message("assistant"):
+    st.markdown(response)
+
+  # Add assistant response to history
+  st.session_state.messages.append({"user": "assistant", "content": response})
