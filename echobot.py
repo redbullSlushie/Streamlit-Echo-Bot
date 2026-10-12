@@ -26,4 +26,4 @@ if prompt := st.chat_input("What is up?"):
     st.markdown(response)
 
   # Add assistant response to history
-  st.session_state.messages.append({"user": "assistant", "content": response})
+  st.session_state.messages.append({"role": "assistant", "content": response})
