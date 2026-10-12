@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Echo Bot")
+st.title("MichaelaJones_EchoBot")
 
 #Image
 with st.chat_message("assistant"):
